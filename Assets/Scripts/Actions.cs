@@ -4,12 +4,19 @@ using UnityEngine;
 using UnityEngine.UI;
 public enum EActions
 {
+    //self-Actions
     rollDice,
+
+    //CommonTile Actions
     buyTile,
+    rentTile,
     buildHouseTile,
     sellHouseTile,
     mortgageTile,
-    redeemTile
+    redeemTile,
+
+    //SpecialTile Actions
+    chanceTile,
 }
 
 public class Actions : MonoBehaviour
@@ -41,33 +48,31 @@ public class Actions : MonoBehaviour
     }
     public void showAction(EActions action)
     {
-       
+        GameObject go = Instantiate<GameObject>(actionButtonPrefab);
+        Text text = go.GetComponentInChildren<Text>();
         switch (action)
         {
             case EActions.rollDice:
-                {
-                    GameObject go = Instantiate<GameObject>(actionButtonPrefab);
-                    go.AddComponent<RollDiceButton>();
-                    go.GetComponentInChildren<Text>().text = go.GetComponent<RollDiceButton>().Name;
-                    go.transform.SetParent(actionButtonsPanel.transform);
-                    go.transform.localScale = Vector3.one;
-                    break;
-                }
+                go.AddComponent<RollDiceButton>();
+                text.text = go.GetComponent<RollDiceButton>().Name;
+                break;
             case EActions.buyTile:
-                {
-                    GameObject go = Instantiate<GameObject>(actionButtonPrefab);
-                    go.AddComponent<BuyTileButton>();
-                    go.GetComponentInChildren<Text>().text = go.GetComponent<BuyTileButton>().Name;
-                    go.transform.SetParent(actionButtonsPanel.transform);
-                    go.transform.localScale = Vector3.one;
-                    break;
-                }
+                go.AddComponent<BuyTileButton>();
+                text.text = go.GetComponent<BuyTileButton>().Name;
+                break;
+            case EActions.rentTile:
+                go.AddComponent<RentTileButton>();
+                text.text = go.GetComponent<RentTileButton>().Name;
+                break;
             default:
                 Logs.PrintToLogs("Not implemented yet");
                 break;
         }
+        go.transform.SetParent(actionButtonsPanel.transform);
+        go.transform.localScale = Vector3.one;
     }
 
+    
     public void Clear()
     {
         foreach(Transform child in actionButtonsPanel.transform)

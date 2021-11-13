@@ -58,6 +58,7 @@
     <Compile Include="Assets\Scripts\Monopoly.cs" />
     <Compile Include="Assets\Scripts\Actions.cs" />
     <Compile Include="Assets\Scripts\EndTurnButton.cs" />
+    <Compile Include="Assets\Scripts\BuyTileButton.cs" />
     <Compile Include="Assets\Scripts\ActionButton.cs" />
     <Compile Include="Assets\Scripts\Logs.cs" />
     <Compile Include="Assets\Scripts\TextLog.cs" />
@@ -68,7 +69,7 @@
     <Compile Include="Assets\Scripts\ChanceTile.cs" />
     <Compile Include="Assets\Scripts\CommonTile.cs" />
     <Compile Include="Assets\Scripts\GroupPlayer.cs" />
-    <Compile Include="Assets\Scripts\BuyTileButton.cs" />
+    <Compile Include="Assets\Scripts\RentTileButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

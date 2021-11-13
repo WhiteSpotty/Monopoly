@@ -27,7 +27,9 @@ public class RollDiceButton : ActionButton
         this.gameObject.GetComponent<Button>().interactable = false;
         EndTurnButton.S.button.interactable = true;
 
-        Actions.S.showTilePossibleActions();
+
+
+        Actions.S.showTilePossibleActions(); //buytile upgradetile morgagetile etc
     }
 
     public override void Start()
@@ -46,7 +48,8 @@ public class RollDiceButton : ActionButton
     }
     public int getTotal()
     {
-        return Dice1 + Dice2;
+        return 4;
+        //return Dice1 + Dice2;
     }
     public void getLastRollString()
     {

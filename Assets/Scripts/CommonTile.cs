@@ -20,6 +20,7 @@ public class CommonTile : Tile
         List<EActions> res = new List<EActions>();
 
         res.Add(EActions.buyTile);
+        res.Add(EActions.rentTile);
 
         return res;
     }
@@ -28,8 +29,12 @@ public class CommonTile : Tile
     {
         GetComponent<Renderer>().material.mainTexture = firmInfo.sprite;
     }
-    public Player setOwner
+    public Player Owner
     {
+        get
+        {
+            return  _owner;
+        }
         set
         {
             _owner = value;

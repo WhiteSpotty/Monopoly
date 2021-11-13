@@ -48,6 +48,8 @@ public class GroupPlayer : MonoBehaviour
 
     public void StartTurn()
     {
+        Logs.PrintToLogs("Start turn player is: "+ActivePlayer.Name);
+
         EndTurnButton.S.button.interactable = false;
         if (ActivePlayer == null) Logs.PrintToLogs("null");
         List<EActions> actions = ActivePlayer.possibleActions();

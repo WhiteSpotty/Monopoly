@@ -53,7 +53,7 @@ public class Board : MonoBehaviour
             go.transform.SetParent(this.gameObject.transform);
             Vector3 pos = new Vector3(nxtX, height, nxtZ);
             go.transform.position = pos;
-            tilePos.Add((nameLayer, i), (layerTiles[i],pos));
+            tilePos.Add((nameLayer, i), (go,pos));
             nxtZ += zTile;
         }
         for (int i=side; i<side*2; i++)
@@ -62,7 +62,7 @@ public class Board : MonoBehaviour
             go.transform.SetParent(this.gameObject.transform);
             Vector3 pos = new Vector3(nxtX, height, nxtZ);
             go.transform.position = pos;
-            tilePos.Add((nameLayer, i), (layerTiles[i], pos));
+            tilePos.Add((nameLayer, i), (go, pos));
             nxtX += xTile;
         }
         for (int i = side * 2; i < side * 3; i++)
@@ -71,7 +71,7 @@ public class Board : MonoBehaviour
             go.transform.SetParent(this.gameObject.transform);
             Vector3 pos = new Vector3(nxtX, height, nxtZ);
             go.transform.position = pos;
-            tilePos.Add((nameLayer, i), (layerTiles[i], pos));
+            tilePos.Add((nameLayer, i), (go, pos));
             nxtZ -= zTile;
         }
         for (int i = side*3; i < side * 4; i++)
@@ -80,7 +80,7 @@ public class Board : MonoBehaviour
             go.transform.SetParent(this.gameObject.transform);
             Vector3 pos = new Vector3(nxtX, height, nxtZ);
             go.transform.position = pos;
-            tilePos.Add((nameLayer, i), (layerTiles[i], pos));
+            tilePos.Add((nameLayer, i), (go, pos));
             nxtX -= xTile;
         }
     }
