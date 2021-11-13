@@ -4,42 +4,36 @@ using UnityEngine;
 
 public class BuyTileButton : ActionButton
 {
-    private CommonTile tile = (CommonTile)GroupPlayer.S.ActivePlayer.getTile();
-    private Player player = GroupPlayer.S.ActivePlayer;
+    private CommonTile commonTile;
+    
+    public override void Awake()
+    {
+        base.Awake();
+        commonTile = (CommonTile)tile;
+        if (commonTile.isOwned)
+        {
+            button.interactable = false;
+        }
+    }
     public override string Name
     {
         get
         {
-            return ("Buy Tile: " + tile.firmInfo.Cost +"$");
-        }
-    }
-    public override void Start()
-    {
-        base.Start();
-        tile = (CommonTile)GroupPlayer.S.ActivePlayer.getTile();
-        player = GroupPlayer.S.ActivePlayer;
-        if (tile.isOwned)
-        {
-            button.interactable = false;
+            return ("Buy Tile: " + commonTile.firmInfo.Cost + "$");
         }
     }
     public override void OnClick()
     {
-        if (checkBalane())
+        if (checkBalance(commonTile.firmInfo.Cost))
         {
-            tile.Owner = player;
-            Logs.PrintToLogs($"{player.Name} bought the tile: {tile.firmInfo.name}");
+            commonTile.Owner = player;
+            Logs.PrintToLogs($"{player.Name} bought the: {commonTile.firmInfo.name}");
             button.interactable = false;
+            player.changeBalanceDelegate(-commonTile.firmInfo.Cost);
         } 
         else
         {
             Logs.PrintToLogs("Not enough money");
         }
     }
-
-    public bool checkBalane()
-    {
-        return player.Balance >= tile.firmInfo.Cost ? true : false;
-    }
-
 }

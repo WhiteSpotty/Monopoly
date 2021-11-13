@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]
     private string _name = "defaultName";
-    [SerializeField]
-    private int _balance = 1000;
+    private int _balance = 372000;
     private ENameLayer _posLayer = ENameLayer.Europe;
     private int _posIndex = 0;
+    public PlayerStats statusPlayer;
+
+    public delegate void PlayerBalanceDelegate(int value);
+    public PlayerBalanceDelegate changeBalanceDelegate;
 
     //Properties
     public string Name { get { return _name; } set { _name = value; } }
@@ -42,6 +44,10 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        changeBalanceDelegate += ChangeBalance;
+    }
 
     //Functions
     public List<EActions> possibleActions()
@@ -56,5 +62,11 @@ public class Player : MonoBehaviour
     public Tile getTile()
     {
         return Board.S.tilePos[(PosLayer, PosIndex)].Item1;
+    }
+
+    public void ChangeBalance (int value)
+    {
+        _balance += value;
+        statusPlayer.Balance = _balance;
     }
 }

@@ -59,4 +59,6 @@ public class FirmInfoScriptableObject : ScriptableObject
     public int Cost {  get { return _cost; } set { _cost = value; } }
     public int Rent { get { return _cost / 10; }  }
 
+    public int HouseCost { get { return _cost / 10; } }
+
 }

@@ -1329,7 +1329,7 @@ MonoBehaviour:
   createPlayer: {fileID: 1115489912}
   player: {fileID: 552546185316545331, guid: 0dbf9524fa36d134c973ef14abf49234, type: 3}
   playersStatsPanel: {fileID: 1287399913}
-  playerStatsPrefab: {fileID: 7603052591628236605, guid: c9b456320ccf41b47b1c68526191f495, type: 3}
+  playerStatsPrefab: {fileID: 3090785413164404056, guid: c9b456320ccf41b47b1c68526191f495, type: 3}
   currPlayers: 0
   players: []
 --- !u!4 &797467602

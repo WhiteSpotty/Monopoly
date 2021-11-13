@@ -6,9 +6,11 @@ public class CommonTile : Tile
 {
 
     public FirmInfoScriptableObject firmInfo;
+    public static int maxHouses = 4;
 
     private Player _owner = null;
     private bool _mortgage = false;
+    private int _currHouses = 0;
 
     public override string Name
     {
@@ -21,6 +23,7 @@ public class CommonTile : Tile
 
         res.Add(EActions.buyTile);
         res.Add(EActions.rentTile);
+        res.Add(EActions.buildHouseTile);
 
         return res;
     }
@@ -50,5 +53,11 @@ public class CommonTile : Tile
     public bool isMortgage
     {
         get { return _mortgage; }
+    }
+
+    public int CurrHouses
+    {
+        get { return _currHouses; }
+        set { _currHouses = value; }
     }
 }

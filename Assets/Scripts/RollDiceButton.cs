@@ -8,6 +8,11 @@ public class RollDiceButton : ActionButton
     private int Dice1;
     private int Dice2;
 
+    public override void Awake()
+    {
+        base.Awake();
+    }
+
     public override string Name
     {
         get
@@ -32,11 +37,6 @@ public class RollDiceButton : ActionButton
         Actions.S.showTilePossibleActions(); //buytile upgradetile morgagetile etc
     }
 
-    public override void Start()
-    {
-        base.Start();
-    }
-
     public void roll()
     {
         Dice1 = Random.Range(1, 6);
@@ -48,8 +48,7 @@ public class RollDiceButton : ActionButton
     }
     public int getTotal()
     {
-        return 4;
-        //return Dice1 + Dice2;
+        return Dice1 + Dice2;
     }
     public void getLastRollString()
     {

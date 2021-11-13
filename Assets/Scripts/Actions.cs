@@ -64,6 +64,10 @@ public class Actions : MonoBehaviour
                 go.AddComponent<RentTileButton>();
                 text.text = go.GetComponent<RentTileButton>().Name;
                 break;
+            case EActions.buildHouseTile:
+                go.AddComponent<BuildHouseTile>();
+                text.text = go.GetComponent<BuildHouseTile>().Name;
+                break;
             default:
                 Logs.PrintToLogs("Not implemented yet");
                 break;

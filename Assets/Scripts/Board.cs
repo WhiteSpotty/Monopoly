@@ -22,6 +22,7 @@ public class Board : MonoBehaviour
 
     [Header("Set Dynamically")]
     public Dictionary<(ENameLayer, int), (Tile, Vector3 )> tilePos = new Dictionary<(ENameLayer, int), (Tile, Vector3)>();
+    public Dictionary<EFirmType, List<Tile>> tileByFirmType = new Dictionary<EFirmType, List<Tile>>(); 
 
     private void Awake()
     {
@@ -47,41 +48,46 @@ public class Board : MonoBehaviour
     {
         int n = layerTiles.Length, side = n/4;
         float nxtX = startX, nxtZ = startZ;
-        for (int i=0; i<side; i++)
+        for (int i=0; i<n; i++)
         {
             Tile go = Instantiate<Tile>(layerTiles[i]);
             go.transform.SetParent(this.gameObject.transform);
             Vector3 pos = new Vector3(nxtX, height, nxtZ);
             go.transform.position = pos;
             tilePos.Add((nameLayer, i), (go,pos));
-            nxtZ += zTile;
-        }
-        for (int i=side; i<side*2; i++)
-        {
-            Tile go = Instantiate<Tile>(layerTiles[i]);
-            go.transform.SetParent(this.gameObject.transform);
-            Vector3 pos = new Vector3(nxtX, height, nxtZ);
-            go.transform.position = pos;
-            tilePos.Add((nameLayer, i), (go, pos));
-            nxtX += xTile;
-        }
-        for (int i = side * 2; i < side * 3; i++)
-        {
-            Tile go = Instantiate<Tile>(layerTiles[i]);
-            go.transform.SetParent(this.gameObject.transform);
-            Vector3 pos = new Vector3(nxtX, height, nxtZ);
-            go.transform.position = pos;
-            tilePos.Add((nameLayer, i), (go, pos));
-            nxtZ -= zTile;
-        }
-        for (int i = side*3; i < side * 4; i++)
-        {
-            Tile go = Instantiate<Tile>(layerTiles[i]);
-            go.transform.SetParent(this.gameObject.transform);
-            Vector3 pos = new Vector3(nxtX, height, nxtZ);
-            go.transform.position = pos;
-            tilePos.Add((nameLayer, i), (go, pos));
-            nxtX -= xTile;
+            
+
+            if (go is CommonTile)
+            {
+                EFirmType type = ((CommonTile)go).firmInfo.Type;
+                if (tileByFirmType.ContainsKey(type))
+                {
+                    List<Tile> curr = tileByFirmType[type];
+                    curr.Add(go);
+                    tileByFirmType[type] = curr;
+                }
+                else
+                {
+                    tileByFirmType.Add(type, new List<Tile>() { go });
+                }
+            }
+
+            if (i<side)
+            {
+                nxtZ += zTile;
+            }
+            else if (i<2*side)
+            {
+                nxtX += xTile;
+            }
+            else if (i<3*side)
+            {
+                nxtZ -= zTile;
+            }
+            else
+            {
+                nxtX -= xTile;
+            }
         }
     }
 }

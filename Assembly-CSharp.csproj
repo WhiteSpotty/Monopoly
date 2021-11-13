@@ -70,6 +70,8 @@
     <Compile Include="Assets\Scripts\CommonTile.cs" />
     <Compile Include="Assets\Scripts\GroupPlayer.cs" />
     <Compile Include="Assets\Scripts\RentTileButton.cs" />
+    <Compile Include="Assets\Scripts\PlayerStats.cs" />
+    <Compile Include="Assets\Scripts\BuildHouseTile.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

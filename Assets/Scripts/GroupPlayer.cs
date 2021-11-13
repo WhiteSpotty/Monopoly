@@ -11,7 +11,7 @@ public class GroupPlayer : MonoBehaviour
     public Canvas createPlayer;
     public Player player;
     public GameObject playersStatsPanel;
-    public GameObject playerStatsPrefab;
+    public PlayerStats playerStatsPrefab;
 
     [Header("Set Dynamically")]
     public int currPlayers = 0;
@@ -83,14 +83,16 @@ public class GroupPlayer : MonoBehaviour
 
         go.transform.localPosition = Board.S.tilePos[(ENameLayer.Europe, 0)].Item2;
 
-        GameObject stat = Instantiate(playerStatsPrefab);
+        PlayerStats stat = Instantiate<PlayerStats>(playerStatsPrefab);
+        go.statusPlayer = stat;
         stat.transform.SetParent(playersStatsPanel.transform);
         stat.transform.localScale = Vector3.one;
 
-        stat.transform.Find("StatName").GetComponent<Text>().text = go.Name;
-        stat.transform.Find("StatBalance").GetComponent<Text>().text = go.Balance.ToString();
-        stat.transform.Find("StatTrait").GetComponent<Text>().text = "Evtush";
-        stat.transform.Find("StatColor").GetComponent<Text>().text = "yellow";
+
+        stat.Name = go.Name;
+        stat.Balance = go.Balance;
+        stat.Trait = "Evtush";
+        stat.Color = "red";
 
         players.Add(go);
         Logs.PrintToLogs($"Player {go.Name} created");
