@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class BuildHouseTile : ActionButton
+public class BuildHouseTileButton : ActionButton
 {
     private CommonTile commonTile;
 
@@ -29,8 +29,8 @@ public class BuildHouseTile : ActionButton
             if (commonTile.CurrHouses < CommonTile.maxHouses)
             {
                 commonTile.CurrHouses++;
-                Logs.PrintToLogs($"{player.Name} build house to tile: {commonTile.firmInfo.name}");
                 player.changeBalanceDelegate(-commonTile.firmInfo.HouseCost);
+                Logs.PrintToLogs($"{player.Name} build house to tile: {commonTile.firmInfo.name}");
             }
             else
             {
@@ -41,6 +41,7 @@ public class BuildHouseTile : ActionButton
         {
             Logs.PrintToLogs("Not enough money");
         }
+        base.OnClick();
     }
 
     public bool HaveAllFirmByType(EFirmType type)

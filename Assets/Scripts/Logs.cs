@@ -13,7 +13,7 @@ public class Logs : MonoBehaviour
 
     private void Awake()
     {
-        content = this.transform.Find("Viewport").transform.Find("Content").gameObject;
+        content = this.transform.Find("Viewport/Content").gameObject;
     }
 
     public static void PrintToLogs(string str)

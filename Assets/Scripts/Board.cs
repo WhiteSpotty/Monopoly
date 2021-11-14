@@ -54,6 +54,7 @@ public class Board : MonoBehaviour
             go.transform.SetParent(this.gameObject.transform);
             Vector3 pos = new Vector3(nxtX, height, nxtZ);
             go.transform.position = pos;
+            go.transform.rotation = Quaternion.Euler(0, i/side*90-90, 0);
             tilePos.Add((nameLayer, i), (go,pos));
             
 

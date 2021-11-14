@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     private int _balance = 372000;
     private ENameLayer _posLayer = ENameLayer.Europe;
     private int _posIndex = 0;
+    private HashSet<Tile> _property = new HashSet<Tile>();
+    public bool isRolled = false;
     public PlayerStats statusPlayer;
 
     public delegate void PlayerBalanceDelegate(int value);
@@ -43,6 +45,11 @@ public class Player : MonoBehaviour
             _posIndex = value % N;
         }
     }
+    public HashSet<Tile> Property
+    {
+        get { return _property; }
+    }
+
 
     private void Start()
     {
@@ -55,8 +62,20 @@ public class Player : MonoBehaviour
         List<EActions> res = new List<EActions>();
 
         res.Add(EActions.rollDice);
+        res.Add(EActions.mortgageTile);
+        res.Add(EActions.redeemTile);
+
+        if (isRolled) { possibleTileActions(ref res); }
 
         return res;
+    }
+    public void possibleTileActions(ref List<EActions> list)
+    {
+        List<EActions> tileActions = getTile().getListActions();
+        foreach (EActions ea in tileActions)
+        {
+            list.Add(ea);
+        }
     }
 
     public Tile getTile()
@@ -68,5 +87,15 @@ public class Player : MonoBehaviour
     {
         _balance += value;
         statusPlayer.Balance = _balance;
+    }
+
+    public bool AddTile(Tile tile)
+    {
+        return _property.Add(tile);
+    }
+
+    public bool RemoveTile(Tile tile)
+    {
+        return _property.Remove(tile);
     }
 }

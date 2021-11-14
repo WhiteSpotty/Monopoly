@@ -32,7 +32,18 @@ public class PlayerStats : MonoBehaviour
     public int Balance
     {
         get { return _balance; }
-        set { _balance = value; BalanceText.text = value.ToString(); }
+        set { _balance = value;
+            if (_balance % 1000000 == 0)
+            {
+                BalanceText.text = (value / 1000000).ToString() + "m";
+            } else if (_balance % 1000 == 0)
+            {
+                BalanceText.text = (value / 1000).ToString() + "k";
+            } else
+            {
+                BalanceText.text = value.ToString();
+            }
+            }
     }
 
     public string Trait

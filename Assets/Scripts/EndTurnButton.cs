@@ -18,7 +18,6 @@ public class EndTurnButton : MonoBehaviour
 
     public void OnClick()
     {
-        Actions.S.Clear();
         GroupPlayer.S.SetNextPlayer(GroupPlayer.S.ActivePlayer);
         GroupPlayer.S.StartTurn();
     }

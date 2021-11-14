@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 7
   _name: Bugatti
-  _cost: 200
+  _cost: 35000
   sprite: {fileID: 2800000, guid: 46d4dd8b965d82a44a1b156c37853c78, type: 3}

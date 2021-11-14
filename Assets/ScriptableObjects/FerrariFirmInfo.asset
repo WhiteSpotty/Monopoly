@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 7
   _name: Ferrari
-  _cost: 150
+  _cost: 15000
   sprite: {fileID: 2800000, guid: 93b6dcf8b80d7814da329d95c13cb576, type: 3}

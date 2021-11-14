@@ -12,6 +12,7 @@ public class Monopoly : MonoBehaviour
     [Header("Set Dynamically")]
     private static int _numPlayers = 2;
     public GroupPlayer players;
+    public GameObject selectPropertyCanvas;
 
 
     private void Awake()
@@ -28,16 +29,10 @@ public class Monopoly : MonoBehaviour
         
     }
 
-    private void Update()
-    {
-        
-
-
-    }
-
     public int numPlayers
     {
         get { return _numPlayers; }
         set { if (value>2 && value<4) _numPlayers = value; }
     }
+
 }

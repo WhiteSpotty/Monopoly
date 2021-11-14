@@ -27,13 +27,15 @@ public class BuyTileButton : ActionButton
         if (checkBalance(commonTile.firmInfo.Cost))
         {
             commonTile.Owner = player;
-            Logs.PrintToLogs($"{player.Name} bought the: {commonTile.firmInfo.name}");
+            player.AddTile(commonTile);
             button.interactable = false;
             player.changeBalanceDelegate(-commonTile.firmInfo.Cost);
-        } 
+            Logs.PrintToLogs($"{player.Name} bought the: {commonTile.firmInfo.Name}");
+        }
         else
         {
             Logs.PrintToLogs("Not enough money");
         }
+        base.OnClick();
     }
 }

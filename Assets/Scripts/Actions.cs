@@ -6,17 +6,43 @@ public enum EActions
 {
     //self-Actions
     rollDice,
+    mortgageTile,
+    redeemTile,
 
     //CommonTile Actions
     buyTile,
     rentTile,
     buildHouseTile,
     sellHouseTile,
-    mortgageTile,
-    redeemTile,
+    //???аукцион???
 
     //SpecialTile Actions
+
+    //Europe
+    goTile,
     chanceTile,
+    eventTile,
+    transitionTile,
+    prisonTile,
+    bankTile,
+    taxTile,
+
+    //Asia
+    harakiriTile,
+    chineseTeapotTile,
+    everestTile,
+    chineseNewYearTile,
+    infinityTsukoyomiTile,
+
+    //America
+    spinWheelTile,
+    tunnelTile,
+    millionariesLifeTile,
+    energyTile,
+    taxiTile,
+    coinMachineTile,
+    mayanTreasureTile,
+    policeOrderTile
 }
 
 public class Actions : MonoBehaviour
@@ -34,18 +60,14 @@ public class Actions : MonoBehaviour
 
     public void showPossibleActions(List<EActions> actions)
     {
+        Clear();
         foreach (EActions action in actions)
         {
             showAction(action);
         }
     }
 
-
-    public void showTilePossibleActions()
-    {
-        List<EActions> actions = GroupPlayer.S.ActivePlayer.getTile().getListActions();
-        Actions.S.showPossibleActions(actions);
-    }
+    //switch EActions
     public void showAction(EActions action)
     {
         GameObject go = Instantiate<GameObject>(actionButtonPrefab);
@@ -65,8 +87,20 @@ public class Actions : MonoBehaviour
                 text.text = go.GetComponent<RentTileButton>().Name;
                 break;
             case EActions.buildHouseTile:
-                go.AddComponent<BuildHouseTile>();
-                text.text = go.GetComponent<BuildHouseTile>().Name;
+                go.AddComponent<BuildHouseTileButton>();
+                text.text = go.GetComponent<BuildHouseTileButton>().Name;
+                break;
+            case EActions.sellHouseTile:
+                go.AddComponent<SellHouseTileButton>();
+                text.text = go.GetComponent<SellHouseTileButton>().Name;
+                break;
+            case EActions.mortgageTile:
+                go.AddComponent<MortgageTileButton>();
+                text.text = go.GetComponent<MortgageTileButton>().Name;
+                break;
+            case EActions.redeemTile:
+                go.AddComponent<RedeemTileButton>();
+                text.text = go.GetComponent<RedeemTileButton>().Name;
                 break;
             default:
                 Logs.PrintToLogs("Not implemented yet");
@@ -76,7 +110,6 @@ public class Actions : MonoBehaviour
         go.transform.localScale = Vector3.one;
     }
 
-    
     public void Clear()
     {
         foreach(Transform child in actionButtonsPanel.transform)

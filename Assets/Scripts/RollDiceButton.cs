@@ -11,6 +11,10 @@ public class RollDiceButton : ActionButton
     public override void Awake()
     {
         base.Awake();
+        if (player.isRolled)
+        {
+            button.interactable = false;
+        }
     }
 
     public override string Name
@@ -24,17 +28,15 @@ public class RollDiceButton : ActionButton
     public override void OnClick()
     {
         roll();
-        Player current = GroupPlayer.S.ActivePlayer;
-        current.PosIndex += getTotal();
-        current.transform.position = Board.S.tilePos[(current.PosLayer, current.PosIndex)].Item2;
+        player.isRolled = true;
+        player.PosIndex += getTotal();
+        player.transform.position = Board.S.tilePos[(player.PosLayer, player.PosIndex)].Item2;
         getLastRollString();
 
         this.gameObject.GetComponent<Button>().interactable = false;
         EndTurnButton.S.button.interactable = true;
 
-
-
-        Actions.S.showTilePossibleActions(); //buytile upgradetile morgagetile etc
+        base.OnClick();
     }
 
     public void roll()
@@ -48,7 +50,7 @@ public class RollDiceButton : ActionButton
     }
     public int getTotal()
     {
-        return Dice1 + Dice2;
+        return 4; // Dice1 + Dice2;
     }
     public void getLastRollString()
     {

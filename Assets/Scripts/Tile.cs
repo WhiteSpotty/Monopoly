@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class Tile : MonoBehaviour
 {
-    public virtual string Name { get;}
+    public abstract string Name { get; }
 
     public abstract List<EActions> getListActions();
     

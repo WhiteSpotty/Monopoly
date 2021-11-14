@@ -32,12 +32,13 @@ public class GroupPlayer : MonoBehaviour
 
     public void CreatePlayers()
     {
+        Time.timeScale = 0;
         if (currPlayers > Monopoly.S.numPlayers-1) { 
             createPlayer.gameObject.SetActive(false); 
             SetNextPlayer(null); //Setting first player turn at the game
 
             StartTurn();
-
+            Time.timeScale = 1f;
             return; 
         }
 
@@ -52,26 +53,26 @@ public class GroupPlayer : MonoBehaviour
 
         EndTurnButton.S.button.interactable = false;
         if (ActivePlayer == null) Logs.PrintToLogs("null");
-        List<EActions> actions = ActivePlayer.possibleActions();
-        Actions.S.showPossibleActions(actions);
 
-        
+        Actions.S.showPossibleActions(ActivePlayer.possibleActions());
     }
-
 
     public Player SetNextPlayer(Player p)
     {
-        if (p == null) { _activePlayer = players[0]; return players[0]; }
-
-        int N=-1, i=0;
-        foreach (Player tmp in players)
+        if (p == null) { _activePlayer = players[0]; }
+        else
         {
-            if (tmp == p) N = i;
-            i++;
-        }
 
-        _activePlayer = players[(N + 1) % players.Count];
-        return players[(N + 1) % players.Count];
+            int N = -1, i = 0;
+            foreach (Player tmp in players)
+            {
+                if (tmp == p) N = i;
+                i++;
+            }
+            _activePlayer = players[(N + 1) % players.Count];
+        }
+        _activePlayer.isRolled = false;
+        return _activePlayer;
     }
 
     public void NextButton() 

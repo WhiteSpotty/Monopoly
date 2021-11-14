@@ -18,7 +18,7 @@ public class ActionButton : MonoBehaviour
         player = GroupPlayer.S.ActivePlayer;
     }
     public virtual string Name { get { return "NOT SET"; } }
-    public virtual void OnClick() { Logs.PrintToLogs("Not assign function"); }
+    public virtual void OnClick() { Actions.S.showPossibleActions(player.possibleActions()); }
 
     public virtual bool checkBalance(int value)
     {

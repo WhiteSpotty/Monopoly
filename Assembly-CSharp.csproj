@@ -57,21 +57,25 @@
     <Compile Include="Assets\Scripts\Tile.cs" />
     <Compile Include="Assets\Scripts\Monopoly.cs" />
     <Compile Include="Assets\Scripts\Actions.cs" />
+    <Compile Include="Assets\Scripts\RentTileButton.cs" />
     <Compile Include="Assets\Scripts\EndTurnButton.cs" />
     <Compile Include="Assets\Scripts\BuyTileButton.cs" />
     <Compile Include="Assets\Scripts\ActionButton.cs" />
     <Compile Include="Assets\Scripts\Logs.cs" />
+    <Compile Include="Assets\Scripts\BuildHouseTileButton.cs" />
     <Compile Include="Assets\Scripts\TextLog.cs" />
     <Compile Include="Assets\Scripts\RollDiceButton.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\FirmInfoScriptableObject.cs" />
+    <Compile Include="Assets\Scripts\PlayerStats.cs" />
     <Compile Include="Assets\Scripts\Board.cs" />
     <Compile Include="Assets\Scripts\ChanceTile.cs" />
     <Compile Include="Assets\Scripts\CommonTile.cs" />
     <Compile Include="Assets\Scripts\GroupPlayer.cs" />
-    <Compile Include="Assets\Scripts\RentTileButton.cs" />
-    <Compile Include="Assets\Scripts\PlayerStats.cs" />
-    <Compile Include="Assets\Scripts\BuildHouseTile.cs" />
+    <Compile Include="Assets\Scripts\SellHouseTileButton.cs" />
+    <Compile Include="Assets\Scripts\SelectProperty.cs" />
+    <Compile Include="Assets\Scripts\MortgageTileButton.cs" />
+    <Compile Include="Assets\Scripts\RedeemTileButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

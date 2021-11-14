@@ -14,7 +14,7 @@ public class CommonTile : Tile
 
     public override string Name
     {
-        get { return firmInfo.name; }
+        get { return firmInfo.Name; }
     }
 
     public override List<EActions> getListActions()
@@ -24,6 +24,7 @@ public class CommonTile : Tile
         res.Add(EActions.buyTile);
         res.Add(EActions.rentTile);
         res.Add(EActions.buildHouseTile);
+        res.Add(EActions.sellHouseTile);
 
         return res;
     }
@@ -54,7 +55,10 @@ public class CommonTile : Tile
     {
         get { return _mortgage; }
     }
-
+    public bool setMortgage
+    {
+        set { _mortgage = value; }
+    }
     public int CurrHouses
     {
         get { return _currHouses; }
