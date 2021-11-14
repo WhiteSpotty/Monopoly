@@ -16,8 +16,8 @@ public enum EActions
     sellHouseTile,
     //???аукцион???
 
-    //SpecialTile Actions
 
+    //SpecialTile Actions
     //Europe
     goTile,
     chanceTile,
@@ -102,6 +102,36 @@ public class Actions : MonoBehaviour
                 go.AddComponent<RedeemTileButton>();
                 text.text = go.GetComponent<RedeemTileButton>().Name;
                 break;
+            case EActions.goTile:
+                getGoBonus(GroupPlayer.S.ActivePlayer);
+                Destroy(go);
+                break;
+            case EActions.chanceTile:
+                ChanceCard cd = (ChanceCard)Board.S.deckByCardType[ECardType.chanceCard].TakeLastCard();
+                cd.Do();
+                Destroy(go);
+                break;
+            case EActions.millionariesLifeTile:
+                MillionariesLifeCard mlc = (MillionariesLifeCard)Board.S.deckByCardType[ECardType.millionariesLifeCard].TakeLastCard();
+                mlc.Do();
+                Destroy(go);
+                break;
+            case EActions.transitionTile:
+                go.AddComponent<TransitionTileButton>();
+                text.text = go.GetComponent<TransitionTileButton>().Name;
+                break;
+            case EActions.prisonTile:
+                setDisabled(GroupPlayer.S.ActivePlayer, 3);
+                Destroy(go);
+                break;
+            case EActions.bankTile:
+                Logs.PrintToLogs("At the bank on a tour");
+                Destroy(go);
+                break;
+            case EActions.taxTile:
+                go.AddComponent<TaxTileButton>();
+                text.text = go.GetComponent<TaxTileButton>().Name;
+                break;
             default:
                 Logs.PrintToLogs("Not implemented yet");
                 break;
@@ -109,7 +139,18 @@ public class Actions : MonoBehaviour
         go.transform.SetParent(actionButtonsPanel.transform);
         go.transform.localScale = Vector3.one;
     }
+    private void getGoBonus(Player p)
+    {
+        int amount = 100000;
+        p.changeBalanceDelegate(amount);
+        Logs.PrintToLogs($"{p.Name} got GO bonus: {amount}");
+    }
 
+    private void setDisabled(Player p, int count)
+    {
+        p.DisabledAmount = count;
+        Logs.PrintToLogs($"{p.Name} remaining disabled for {p.DisabledAmount}");
+    }
     public void Clear()
     {
         foreach(Transform child in actionButtonsPanel.transform)

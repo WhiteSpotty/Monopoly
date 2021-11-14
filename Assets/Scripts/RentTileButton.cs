@@ -10,7 +10,7 @@ public class RentTileButton : ActionButton
     {
         base.Awake();
         commonTile = (CommonTile)tile;
-        if (!commonTile.isOwned || commonTile.Owner== player || commonTile.isMortgage )
+        if (!commonTile.isOwned || commonTile.Owner== player || commonTile.isMortgage || player.payedTax)
         {
             button.interactable = false;
         }
@@ -19,7 +19,7 @@ public class RentTileButton : ActionButton
     {
         get
         {
-            if (!commonTile.isOwned || commonTile.Owner == player || commonTile.isMortgage)
+            if (!button.interactable)
             {
                 return "No pay rent";
             }
@@ -36,6 +36,7 @@ public class RentTileButton : ActionButton
         {
             Logs.PrintToLogs($"{player.Name} payed rent({ commonTile.firmInfo.Rent}$) to the player: {commonTile.Owner.Name}");
             button.interactable = false;
+            player.payedTax = true;
             player.changeBalanceDelegate(-commonTile.firmInfo.Rent);
             commonTile.Owner.changeBalanceDelegate(commonTile.firmInfo.Rent);
         }

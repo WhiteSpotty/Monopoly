@@ -35,13 +35,13 @@ public class PlayerStats : MonoBehaviour
         set { _balance = value;
             if (_balance % 1000000 == 0)
             {
-                BalanceText.text = (value / 1000000).ToString() + "m";
+                BalanceText.text = (value / 1000000).ToString() + "m$";
             } else if (_balance % 1000 == 0)
             {
-                BalanceText.text = (value / 1000).ToString() + "k";
+                BalanceText.text = (value / 1000).ToString() + "k$";
             } else
             {
-                BalanceText.text = value.ToString();
+                BalanceText.text = value.ToString()+"$";
             }
             }
     }

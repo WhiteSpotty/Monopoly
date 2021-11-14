@@ -63,19 +63,40 @@
     <Compile Include="Assets\Scripts\ActionButton.cs" />
     <Compile Include="Assets\Scripts\Logs.cs" />
     <Compile Include="Assets\Scripts\BuildHouseTileButton.cs" />
+    <Compile Include="Assets\Scripts\RedeemTileButton.cs" />
     <Compile Include="Assets\Scripts\TextLog.cs" />
+    <Compile Include="Assets\Scripts\SelectProperty.cs" />
+    <Compile Include="Assets\Scripts\SellHouseTileButton.cs" />
     <Compile Include="Assets\Scripts\RollDiceButton.cs" />
+    <Compile Include="Assets\Scripts\MortgageTileButton.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\FirmInfoScriptableObject.cs" />
     <Compile Include="Assets\Scripts\PlayerStats.cs" />
     <Compile Include="Assets\Scripts\Board.cs" />
-    <Compile Include="Assets\Scripts\ChanceTile.cs" />
+    <Compile Include="Assets\Scripts\SpecialTiles\ChanceTile.cs" />
     <Compile Include="Assets\Scripts\CommonTile.cs" />
     <Compile Include="Assets\Scripts\GroupPlayer.cs" />
-    <Compile Include="Assets\Scripts\SellHouseTileButton.cs" />
-    <Compile Include="Assets\Scripts\SelectProperty.cs" />
-    <Compile Include="Assets\Scripts\MortgageTileButton.cs" />
-    <Compile Include="Assets\Scripts\RedeemTileButton.cs" />
+    <Compile Include="Assets\Scripts\Decks\Deck.cs" />
+    <Compile Include="Assets\Scripts\Decks\Card.cs" />
+    <Compile Include="Assets\Scripts\Decks\ChanceDeck.cs" />
+    <Compile Include="Assets\Scripts\Decks\ChanceCard.cs" />
+    <Compile Include="Assets\Scripts\SpecialTiles\MillionariesLifeTile.cs" />
+    <Compile Include="Assets\Scripts\Decks\MillionariesLifeDeck.cs" />
+    <Compile Include="Assets\Scripts\Decks\MillionariesLifeCard.cs" />
+    <Compile Include="Assets\Scripts\Decks\MillionariesLifeCards\AllGetBonus.cs" />
+    <Compile Include="Assets\Scripts\Decks\MillionariesLifeCards\CurrentPlayerGetBonus.cs" />
+    <Compile Include="Assets\Scripts\SpecialTiles\PrisonTile.cs" />
+    <Compile Include="Assets\Scripts\SpecialTiles\BankTile.cs" />
+    <Compile Include="Assets\Scripts\SpecialTiles\GoTile.cs" />
+    <Compile Include="Assets\Scripts\SpecialTiles\TaxTile.cs" />
+    <Compile Include="Assets\Scripts\TaxTileButton.cs" />
+    <Compile Include="Assets\Scripts\SpecialTiles\TransitionTile.cs" />
+    <Compile Include="Assets\Scripts\TransitionTileButton.cs" />
+    <Compile Include="Assets\Scripts\SelectLayer.cs" />
+    <Compile Include="Assets\Scripts\SpecialTiles\TransitionsTile\SouthTransitionTile.cs" />
+    <Compile Include="Assets\Scripts\SpecialTiles\TransitionsTile\WestTransitionTile.cs" />
+    <Compile Include="Assets\Scripts\SpecialTiles\TransitionsTile\NorthTransitionTile.cs" />
+    <Compile Include="Assets\Scripts\SpecialTiles\TransitionsTile\EastTransitionTile.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -662,6 +683,9 @@
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>

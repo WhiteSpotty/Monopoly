@@ -16,6 +16,7 @@ public class GroupPlayer : MonoBehaviour
     [Header("Set Dynamically")]
     public int currPlayers = 0;
     public List<Player> players;
+    private List<Color> colors = new List<Color>() { Color.red, Color.yellow, Color.green, Color.blue, Color.cyan, Color.magenta };
     
 
     private Player _activePlayer = null;
@@ -49,6 +50,16 @@ public class GroupPlayer : MonoBehaviour
 
     public void StartTurn()
     {
+        if (ActivePlayer.isDisabled)
+        {
+            Logs.PrintToLogs($"{ActivePlayer.Name} is disabled remaining for: {ActivePlayer.DisabledAmount}");
+            ActivePlayer.DisabledAmount = -1;
+
+            GroupPlayer.S.SetNextPlayer(GroupPlayer.S.ActivePlayer);
+            StartTurn();
+            return;
+        }
+
         Logs.PrintToLogs("Start turn player is: "+ActivePlayer.Name);
 
         EndTurnButton.S.button.interactable = false;
@@ -71,7 +82,11 @@ public class GroupPlayer : MonoBehaviour
             }
             _activePlayer = players[(N + 1) % players.Count];
         }
+
         _activePlayer.isRolled = false;
+        _activePlayer.payedTax = false;
+        _activePlayer.payRent = false;
+
         return _activePlayer;
     }
 
@@ -80,7 +95,12 @@ public class GroupPlayer : MonoBehaviour
         Player go = Instantiate<Player>(player);
         go.transform.SetParent(this.gameObject.transform);
         go.Name = createPlayer.GetComponentInChildren<InputField>().text;
-        createPlayer.GetComponentInChildren<InputField>().text ="";
+        createPlayer.GetComponentInChildren<InputField>().text = "";
+
+
+        Dropdown dd = createPlayer.transform.Find("CreatePlayerPanel/ColorDropdown").GetComponent<Dropdown>();
+        int colorValue = dd.value;
+        go.color = colors[colorValue];
 
         go.transform.localPosition = Board.S.tilePos[(ENameLayer.Europe, 0)].Item2;
 
@@ -93,7 +113,7 @@ public class GroupPlayer : MonoBehaviour
         stat.Name = go.Name;
         stat.Balance = go.Balance;
         stat.Trait = "Evtush";
-        stat.Color = "red";
+        stat.Color = dd.options[dd.value].text;
 
         players.Add(go);
         Logs.PrintToLogs($"Player {go.Name} created");

@@ -6,11 +6,17 @@ public class Player : MonoBehaviour
 {
     private string _name = "defaultName";
     private int _balance = 372000;
+    private Color _color = Color.white;
     private ENameLayer _posLayer = ENameLayer.Europe;
     private int _posIndex = 0;
     private HashSet<Tile> _property = new HashSet<Tile>();
     public bool isRolled = false;
     public PlayerStats statusPlayer;
+    private int _disabledAmount = 0;
+
+
+    public bool payedTax = false;
+    public bool payRent = false;
 
     public delegate void PlayerBalanceDelegate(int value);
     public PlayerBalanceDelegate changeBalanceDelegate;
@@ -18,6 +24,11 @@ public class Player : MonoBehaviour
     //Properties
     public string Name { get { return _name; } set { _name = value; } }
     public int Balance { get { return _balance; } }
+    public Color color { get { return _color; } 
+        set { _color = value; 
+            this.transform.GetComponentInChildren<Renderer>().material.color = _color;
+        } 
+    }
     public ENameLayer PosLayer { get { return _posLayer; }
         set
         {
@@ -49,6 +60,13 @@ public class Player : MonoBehaviour
     {
         get { return _property; }
     }
+
+    public int DisabledAmount
+    {
+        get { return _disabledAmount; }
+        set { _disabledAmount += value; }
+    }
+    public bool isDisabled { get { return _disabledAmount > 0 ? true : false; } }
 
 
     private void Start()
@@ -97,5 +115,12 @@ public class Player : MonoBehaviour
     public bool RemoveTile(Tile tile)
     {
         return _property.Remove(tile);
+    }
+
+    public void MoveTo (ENameLayer layer, int ind)
+    {
+        this.PosLayer = layer;
+        this.PosIndex = ind;
+        this.transform.position = Board.S.tilePos[(PosLayer, PosIndex)].Item2;
     }
 }

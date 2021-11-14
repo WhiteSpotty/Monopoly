@@ -20,7 +20,7 @@ public class SellHouseTileButton : ActionButton
         {
             if (commonTile.CurrHouses == 0)
             {
-                return ("Nothing to sell");
+                return ("No any houses to sell");
             }
             else
             {

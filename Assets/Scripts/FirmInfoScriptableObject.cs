@@ -10,9 +10,9 @@ public enum EFirmType
     CarAsia,
     BankAsia,
     ConsoleAsia,
+    CameraAsia,
     PhoneAsia,
-    fifthAsia,
-    sixthAsia,
+    AnimeAsia,
 
     //Europe
     CarEurope,
@@ -22,7 +22,7 @@ public enum EFirmType
     PhoneEurope,
     OperatorEurope,
     BeerEurope,
-    eightsEurope,
+    GazEurope,
 
     //America
     ITAmerica,

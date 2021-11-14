@@ -50,10 +50,10 @@ public class RollDiceButton : ActionButton
     }
     public int getTotal()
     {
-        return 4; // Dice1 + Dice2;
+        return Dice1 + Dice2;
     }
     public void getLastRollString()
     {
-        Logs.PrintToLogs($"Roll is Dice1 : {Dice1}, Dice2 : {Dice2}");
+        Logs.PrintToLogs($"Dice1 : {Dice1}, Dice2 : {Dice2}");
     }
 }

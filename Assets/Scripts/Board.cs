@@ -4,9 +4,9 @@ using UnityEngine;
 
 public enum ENameLayer
 {
-    Asia,
+    America,
     Europe,
-    America
+    Asia
 }
 
 public class Board : MonoBehaviour
@@ -22,7 +22,13 @@ public class Board : MonoBehaviour
 
     [Header("Set Dynamically")]
     public Dictionary<(ENameLayer, int), (Tile, Vector3 )> tilePos = new Dictionary<(ENameLayer, int), (Tile, Vector3)>();
-    public Dictionary<EFirmType, List<Tile>> tileByFirmType = new Dictionary<EFirmType, List<Tile>>(); 
+    public Dictionary<EFirmType, List<Tile>> tileByFirmType = new Dictionary<EFirmType, List<Tile>>();
+    public Dictionary<ECardType, Deck> deckByCardType = new Dictionary<ECardType, Deck>();
+
+    public List<(TransitionTile, (ENameLayer, int))> southTransitions = new List<(TransitionTile, (ENameLayer, int))>();
+    public List<(TransitionTile, (ENameLayer, int))> eastTransitions = new List<(TransitionTile, (ENameLayer, int))>();
+    public List<(TransitionTile, (ENameLayer, int))> westTransitions = new List<(TransitionTile, (ENameLayer, int))>();
+    public List<(TransitionTile, (ENameLayer, int))> northTransitions = new List<(TransitionTile, (ENameLayer, int))>();
 
     private void Awake()
     {
@@ -37,6 +43,12 @@ public class Board : MonoBehaviour
         MainCamera.target = go;
 
 
+        //Creating Decks
+        deckByCardType.Add(ECardType.chanceCard, new ChanceDeck());
+        deckByCardType.Add(ECardType.millionariesLifeCard, new MillionariesLifeDeck());
+
+
+        //Creating Tiles
         CreateLayer(ENameLayer.America, americaTiles, 0f,0f,0f);
         CreateLayer(ENameLayer.Europe, europeTiles, 1f,0.25f,1f);
         CreateLayer(ENameLayer.Asia, asiaTiles, 2f,0.5f,2f);
@@ -56,8 +68,26 @@ public class Board : MonoBehaviour
             go.transform.position = pos;
             go.transform.rotation = Quaternion.Euler(0, i/side*90-90, 0);
             tilePos.Add((nameLayer, i), (go,pos));
-            
 
+            if (go is TransitionTile)
+            {
+                if (go is SouthTransitionTile)
+                {
+                    southTransitions.Add(((SouthTransitionTile)go, (nameLayer, i)));
+                }
+                else if (go is EastTransitionTile)
+                {
+                    eastTransitions.Add(((EastTransitionTile)go, (nameLayer, i)));
+                }
+                else if (go is NorthTransitionTile)
+                {
+                    southTransitions.Add(((NorthTransitionTile)go, (nameLayer, i)));
+                }
+                else if (go is WestTransitionTile)
+                {
+                    westTransitions.Add(((WestTransitionTile)go, (nameLayer, i)));
+                }
+            }
             if (go is CommonTile)
             {
                 EFirmType type = ((CommonTile)go).firmInfo.Type;
