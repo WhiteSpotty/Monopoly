@@ -15,4 +15,4 @@ MonoBehaviour:
   _type: 21
   _name: AMD
   _cost: 900000
-  sprite: {fileID: 2800000, guid: d4a5bad5d539f9a438be9e7f60c7849a, type: 3}
+  sprite: {fileID: 2800000, guid: 0d6cec728308c7440a50735a38582108, type: 3}

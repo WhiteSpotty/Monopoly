@@ -15,4 +15,4 @@ MonoBehaviour:
   _type: 13
   _name: Stella Artois
   _cost: 145000
-  sprite: {fileID: 2800000, guid: a15af40974264b941802793fb3ff422a, type: 3}
+  sprite: {fileID: 2800000, guid: a5d684a92cb3fe6408289170de81c0b0, type: 3}

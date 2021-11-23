@@ -15,4 +15,4 @@ MonoBehaviour:
   _type: 11
   _name: Siemens
   _cost: 80000
-  sprite: {fileID: 2800000, guid: 2e724bcfa9ecd3440811c5441ab0a072, type: 3}
+  sprite: {fileID: 2800000, guid: 3941bc2c1ad03374ca528ff56238ab06, type: 3}

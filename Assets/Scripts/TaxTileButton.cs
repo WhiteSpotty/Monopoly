@@ -8,7 +8,7 @@ public class TaxTileButton : ActionButton
     public override void Awake()
     {
         base.Awake();
-        if (player.payedTax || player.Property.Count == 0)
+        if (player.payedTax || player.Property.Count == 0 || player is ProfessionalCriminal)
         {
             button.interactable = false;
         }

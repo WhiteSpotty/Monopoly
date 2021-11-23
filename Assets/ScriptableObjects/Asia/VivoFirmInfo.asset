@@ -15,4 +15,4 @@ MonoBehaviour:
   _type: 5
   _name: Vivo
   _cost: 150000
-  sprite: {fileID: 2800000, guid: cd7525e60fc38764d8dd2983d2f2e7b6, type: 3}
+  sprite: {fileID: 2800000, guid: 25326ee7919d3924c973563799d8e0a4, type: 3}

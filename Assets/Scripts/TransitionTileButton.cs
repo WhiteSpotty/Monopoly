@@ -33,17 +33,17 @@ public class TransitionTileButton : ActionButton
         }
         else if (tile is WestTransitionTile)
         {
-            player.MoveTo(Board.S.westTransitions[(int)layer].Item2.Item1, Board.S.southTransitions[(int)layer].Item2.Item2);
+            player.MoveTo(Board.S.westTransitions[(int)layer].Item2.Item1, Board.S.westTransitions[(int)layer].Item2.Item2);
 
         }
         else if (tile is NorthTransitionTile)
         {
-            player.MoveTo(Board.S.northTransitions[(int)layer].Item2.Item1, Board.S.southTransitions[(int)layer].Item2.Item2);
+            player.MoveTo(Board.S.northTransitions[(int)layer].Item2.Item1, Board.S.northTransitions[(int)layer].Item2.Item2);
 
         }
         else if (tile is EastTransitionTile)
         {
-            player.MoveTo(Board.S.eastTransitions[(int)layer].Item2.Item1, Board.S.southTransitions[(int)layer].Item2.Item2);
+            player.MoveTo(Board.S.eastTransitions[(int)layer].Item2.Item1, Board.S.eastTransitions[(int)layer].Item2.Item2);
         }
         else
         {

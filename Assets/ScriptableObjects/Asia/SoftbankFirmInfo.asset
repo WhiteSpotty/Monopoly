@@ -15,4 +15,4 @@ MonoBehaviour:
   _type: 2
   _name: Softbank
   _cost: 15000
-  sprite: {fileID: 2800000, guid: 9989d8bfccccf7f4b991e0aeb58bfe11, type: 3}
+  sprite: {fileID: 2800000, guid: 3ae8cdc950ed18e46b2b1c6d4dab7393, type: 3}

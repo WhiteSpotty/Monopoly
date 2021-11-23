@@ -15,4 +15,4 @@ MonoBehaviour:
   _type: 21
   _name: Intel
   _cost: 1000000
-  sprite: {fileID: 2800000, guid: bb4a21fa9e9359c42af42e4084189eb0, type: 3}
+  sprite: {fileID: 2800000, guid: fd26400c6fe5e9f4c8382e0ef28aa334, type: 3}

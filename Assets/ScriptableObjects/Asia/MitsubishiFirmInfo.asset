@@ -15,4 +15,4 @@ MonoBehaviour:
   _type: 1
   _name: Mitsubishi
   _cost: 5000
-  sprite: {fileID: 2800000, guid: a3ec4156b8f8b72458e1aef1506fdd2b, type: 3}
+  sprite: {fileID: 2800000, guid: 14b9d7b9555493f439d284e6cc36c593, type: 3}

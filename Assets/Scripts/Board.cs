@@ -81,7 +81,7 @@ public class Board : MonoBehaviour
                 }
                 else if (go is NorthTransitionTile)
                 {
-                    southTransitions.Add(((NorthTransitionTile)go, (nameLayer, i)));
+                    northTransitions.Add(((NorthTransitionTile)go, (nameLayer, i)));
                 }
                 else if (go is WestTransitionTile)
                 {

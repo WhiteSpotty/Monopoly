@@ -15,4 +15,4 @@ MonoBehaviour:
   _type: 4
   _name: Panasonic
   _cost: 80000
-  sprite: {fileID: 2800000, guid: 39371b458994e444dbb020a8410c149c, type: 3}
+  sprite: {fileID: 2800000, guid: 9599d10b2a4dc6e458fc930253080cdb, type: 3}

@@ -15,4 +15,4 @@ MonoBehaviour:
   _type: 18
   _name: Coca-Cola
   _cost: 330000
-  sprite: {fileID: 2800000, guid: 580e0a8763ce9b744a29566228c3e9d4, type: 3}
+  sprite: {fileID: 2800000, guid: 37e829a0230f0ce4ea431bd1c66ce3cf, type: 3}

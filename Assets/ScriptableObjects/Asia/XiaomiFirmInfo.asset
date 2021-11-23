@@ -15,4 +15,4 @@ MonoBehaviour:
   _type: 5
   _name: Xiaomi
   _cost: 145000
-  sprite: {fileID: 2800000, guid: 1fc80abd39b8ad2488383cbf36d1e414, type: 3}
+  sprite: {fileID: 2800000, guid: d1278c54a3df49c41afe1f20aba0aa77, type: 3}

@@ -15,4 +15,4 @@ MonoBehaviour:
   _type: 17
   _name: Amazon
   _cost: 210000
-  sprite: {fileID: 2800000, guid: 82d6d52feb36bd0438fa2971219bd727, type: 3}
+  sprite: {fileID: 2800000, guid: c8a75aa9975bcb248bd351afecdae491, type: 3}

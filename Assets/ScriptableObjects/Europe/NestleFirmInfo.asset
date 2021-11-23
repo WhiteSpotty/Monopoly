@@ -15,4 +15,4 @@ MonoBehaviour:
   _type: 9
   _name: Nestle
   _cost: 40000
-  sprite: {fileID: 2800000, guid: 30feade44b2856f41b7384ecde0bab75, type: 3}
+  sprite: {fileID: 2800000, guid: f6906dcb05e4c5f4ca4b2e5006c1ccbb, type: 3}

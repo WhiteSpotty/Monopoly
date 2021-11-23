@@ -29,8 +29,9 @@ public class RollDiceButton : ActionButton
     {
         roll();
         player.isRolled = true;
-        player.PosIndex += getTotal();
-        player.transform.position = Board.S.tilePos[(player.PosLayer, player.PosIndex)].Item2;
+        int ind = player.PosIndex + getTotal();
+        player.MoveTo(player.PosLayer, ind);
+        //player.transform.position = Board.S.tilePos[(player.PosLayer, player.PosIndex)].Item2;
         getLastRollString();
 
         this.gameObject.GetComponent<Button>().interactable = false;

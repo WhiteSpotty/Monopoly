@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private string _name = "defaultName";
-    private int _balance = 372000;
-    private Color _color = Color.white;
-    private ENameLayer _posLayer = ENameLayer.Europe;
-    private int _posIndex = 0;
-    private HashSet<Tile> _property = new HashSet<Tile>();
+    protected string _name = "defaultName";
+    protected int _balance = 372000;
+    protected Color _color = Color.white;
+    protected ENameLayer _posLayer = ENameLayer.Europe;
+    protected int _posIndex = 0;
+    public HashSet<Tile> _property = new HashSet<Tile>();
     public bool isRolled = false;
     public PlayerStats statusPlayer;
-    private int _disabledAmount = 0;
+    protected int _disabledAmount = 0;
+    protected int bonusPassedLayer = 50000;
 
-
+    public static Vector3[] pointPos = new Vector3[] { new Vector3(0.25f, 0, 0.25f), new Vector3(0.25f, 0, -0.25f), 
+        new Vector3(-0.25f, 0, 0.25f), new Vector3(-0.25f, 0, -0.25f) };
     public bool payedTax = false;
     public bool payRent = false;
 
@@ -35,7 +37,7 @@ public class Player : MonoBehaviour
             _posLayer = value;
         }
         }
-    public int PosIndex
+    public virtual int PosIndex
     {
         get { return _posIndex; }
         set
@@ -53,6 +55,7 @@ public class Player : MonoBehaviour
                     N = Board.S.americaTiles.Length;
                     break;
             }
+            if (value > N) { this.changeBalanceDelegate(bonusPassedLayer); Logs.PrintToLogs($"{this.Name} passed the layer and recieved {bonusPassedLayer}"); }
             _posIndex = value % N;
         }
     }
@@ -68,8 +71,12 @@ public class Player : MonoBehaviour
     }
     public bool isDisabled { get { return _disabledAmount > 0 ? true : false; } }
 
+    protected void Awake()
+    {
 
-    private void Start()
+    }
+
+    protected void Start()
     {
         changeBalanceDelegate += ChangeBalance;
     }
@@ -117,10 +124,21 @@ public class Player : MonoBehaviour
         return _property.Remove(tile);
     }
 
-    public void MoveTo (ENameLayer layer, int ind)
+    public virtual void MoveTo (ENameLayer layer, int ind)
     {
+        int cnt = GroupPlayer.S.AmountPLayersOnTile(layer, ind);
         this.PosLayer = layer;
         this.PosIndex = ind;
-        this.transform.position = Board.S.tilePos[(PosLayer, PosIndex)].Item2;
+        this.transform.position = Board.S.tilePos[(PosLayer, PosIndex)].Item2 + pointPos[cnt];
     }
+
+    public void PlaceTo (ENameLayer layer, int ind)
+    {
+        int cnt = GroupPlayer.S.AmountPLayersOnTile(layer, ind);
+        this.PosLayer = layer;
+        this.PosIndex = ind;
+        this.transform.position = (Board.S.tilePos[(PosLayer, PosIndex)].Item2 + pointPos[cnt]);
+    }
+
+    
 }

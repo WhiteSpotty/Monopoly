@@ -15,4 +15,4 @@ MonoBehaviour:
   _type: 19
   _name: Twitter
   _cost: 320000
-  sprite: {fileID: 2800000, guid: 5140e1756c245914683b04b401ec6655, type: 3}
+  sprite: {fileID: 2800000, guid: 66058a3de3fb85a4f96fc12dfb8545f9, type: 3}

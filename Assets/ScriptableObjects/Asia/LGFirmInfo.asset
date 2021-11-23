@@ -15,4 +15,4 @@ MonoBehaviour:
   _type: 4
   _name: LG
   _cost: 80000
-  sprite: {fileID: 2800000, guid: 78223c3fb39d49149a8e6e6e64e51334, type: 3}
+  sprite: {fileID: 2800000, guid: b760e2caf25757a4c91d51022ac9df34, type: 3}
