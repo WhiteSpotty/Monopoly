@@ -50,7 +50,7 @@ public class RollDiceButton : ActionButton
     }
     public int getTotal()
     {
-        return 1;// Dice1 + Dice2;
+        return Dice1 + Dice2;
     }
     public void getLastRollString()
     {
