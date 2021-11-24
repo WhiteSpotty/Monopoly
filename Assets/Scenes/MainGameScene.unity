@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 2056a343c3e01e34a8c2fae1d438cafc, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -2646,6 +2646,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionButtonPrefab: {fileID: 4727961556515469720, guid: 6e7914d5e21d83a4f84132590d67971b, type: 3}
   actionButtonsPanel: {fileID: 1129324870}
+  canEndTurn: 0
 --- !u!1 &1059725772
 GameObject:
   m_ObjectHideFlags: 0
