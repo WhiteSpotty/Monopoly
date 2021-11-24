@@ -108,6 +108,8 @@
     <Compile Include="Assets\Scripts\ControlsButton.cs" />
     <Compile Include="Assets\Scripts\SettingsButton.cs" />
     <Compile Include="Assets\Scripts\PauseButton.cs" />
+    <Compile Include="Assets\Scripts\ValueSliderNumberOfPlayers.cs" />
+    <Compile Include="Assets\Scripts\SettingsInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

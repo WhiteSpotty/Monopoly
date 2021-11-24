@@ -10,7 +10,7 @@ public class Monopoly : MonoBehaviour
     
 
     [Header("Set Dynamically")]
-    private static int _numPlayers = 2;
+    private int _numPlayers;
     public GroupPlayer players;
     public GameObject selectPropertyCanvas;
 
@@ -24,15 +24,14 @@ public class Monopoly : MonoBehaviour
     {
         Board.S.CreateBoard();
 
+        NumPlayers = SettingsInfo.numberOfPlayers;
         GroupPlayer.S.CreatePlayers();
-
-        
     }
 
-    public int numPlayers
+    public int NumPlayers
     {
         get { return _numPlayers; }
-        set { if (value>2 && value<4) _numPlayers = value; }
+        set { if (value>=2 && value<=4) _numPlayers = value; }
     }
 
 }

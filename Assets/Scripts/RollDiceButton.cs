@@ -35,7 +35,6 @@ public class RollDiceButton : ActionButton
         getLastRollString();
 
         this.gameObject.GetComponent<Button>().interactable = false;
-        EndTurnButton.S.button.interactable = true;
 
         base.OnClick();
     }
@@ -51,7 +50,7 @@ public class RollDiceButton : ActionButton
     }
     public int getTotal()
     {
-        return Dice1 + Dice2;
+        return 1;// Dice1 + Dice2;
     }
     public void getLastRollString()
     {

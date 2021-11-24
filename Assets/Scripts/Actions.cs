@@ -53,6 +53,9 @@ public class Actions : MonoBehaviour
     public GameObject actionButtonPrefab;
     public GameObject actionButtonsPanel;
 
+    [Header("Set Dynamically")]
+    public bool canEndTurn;
+
     private void Awake()
     {
         S = this;
@@ -60,11 +63,14 @@ public class Actions : MonoBehaviour
 
     public void showPossibleActions(List<EActions> actions)
     {
+        canEndTurn = true;
         Clear();
         foreach (EActions action in actions)
         {
             showAction(action);
         }
+        if (canEndTurn) { EndTurnButton.S.button.interactable = true; }
+        else { EndTurnButton.S.button.interactable = false; }
     }
 
     //switch EActions
@@ -77,6 +83,7 @@ public class Actions : MonoBehaviour
             case EActions.rollDice:
                 go.AddComponent<RollDiceButton>();
                 text.text = go.GetComponent<RollDiceButton>().Name;
+                if (go.GetComponent<Button>().interactable == true) canEndTurn = false;
                 break;
             case EActions.buyTile:
                 go.AddComponent<BuyTileButton>();
@@ -85,6 +92,7 @@ public class Actions : MonoBehaviour
             case EActions.rentTile:
                 go.AddComponent<RentTileButton>();
                 text.text = go.GetComponent<RentTileButton>().Name;
+                if (go.GetComponent<Button>().interactable == true) canEndTurn = false;
                 break;
             case EActions.buildHouseTile:
                 go.AddComponent<BuildHouseTileButton>();
@@ -131,6 +139,7 @@ public class Actions : MonoBehaviour
             case EActions.taxTile:
                 go.AddComponent<TaxTileButton>();
                 text.text = go.GetComponent<TaxTileButton>().Name;
+                if (go.GetComponent<Button>().interactable == true) canEndTurn = false;
                 break;
             default:
                 Logs.PrintToLogs("Not implemented yet");

@@ -35,7 +35,7 @@ public class GroupPlayer : MonoBehaviour
     public void CreatePlayers()
     {
         Time.timeScale = 0;
-        if (currPlayers > Monopoly.S.numPlayers-1) { 
+        if (currPlayers > Monopoly.S.NumPlayers-1) { 
             createPlayer.gameObject.SetActive(false); 
             SetNextPlayer(null); //Setting first player turn at the game
 
@@ -51,6 +51,8 @@ public class GroupPlayer : MonoBehaviour
 
     public void StartTurn()
     {
+        
+
         if (ActivePlayer.isDisabled)
         {
             Logs.PrintToLogs($"{ActivePlayer.Name} is disabled remaining for: {ActivePlayer.DisabledAmount}");
@@ -63,6 +65,7 @@ public class GroupPlayer : MonoBehaviour
 
         Logs.PrintToLogs("Start turn player is: "+ActivePlayer.Name);
         SetActiveStatusBar();
+
 
         EndTurnButton.S.button.interactable = false;
         if (ActivePlayer == null) Logs.PrintToLogs("null");
