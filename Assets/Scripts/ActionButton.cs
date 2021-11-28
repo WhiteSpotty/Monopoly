@@ -8,7 +8,7 @@ public class ActionButton : MonoBehaviour
     protected Tile tile;
     protected Player player;
     protected Button button;
-
+    
     public virtual void Awake()
     {
         button = GetComponent<Button>();

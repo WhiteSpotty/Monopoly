@@ -11,7 +11,7 @@ public class BuildHouseTileButton : ActionButton
     {
         base.Awake();
         commonTile = (CommonTile)tile;
-        if (!HaveAllFirmByType(commonTile.firmInfo.Type))
+        if (!HaveAllFirmByType(commonTile.firmInfo.Type) || commonTile.CurrHouses == CommonTile.maxHouses)
         {
             button.interactable = false;
         }
@@ -20,7 +20,14 @@ public class BuildHouseTileButton : ActionButton
     {
         get
         {
-            return ("Build House for: " + commonTile.firmInfo.HouseCost + "$");
+            if (button.interactable)
+            {
+                return ("Build House for: " + commonTile.firmInfo.HouseCost + "$");
+            }
+            else
+            {
+                return ("Max houses");
+            }
         }
     }
     public override void OnClick()
